@@ -1,0 +1,14 @@
+construir docker: sudo docker compose up -d
+
+sudo docker ps
+
+Crear un topic:
+docker exec -it a6d8d67109d3 /opt/kafka/bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic my-topic
+
+Mandar mensajes al topic>
+
+docker exec -it a6d8d67109d3 /opt/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic my-topic
+
+Escribir mensajes al topic:
+
+docker exec -it a6d8d67109d3 /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning
