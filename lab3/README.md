@@ -17,11 +17,11 @@ Se han utilizado los siguientes modelos preentrenados para realizar las tareas d
 
 Se despliega la siguiente página donde el usuario tiene la posibilidad de subir la imagen que desea procesar. Al seleccionar el botón Generar Descripción y Tags inicia el proceso de análisis.
 
-<img src="lab3/images_rd/upload_image.png">
+<img src="images_rd/upload_image.png">
 
 Luego, se despliega la siguiente página con los resultados:
 
-<img src="lab3/images_rd/results_lab2.png">
+<img src="images_rd/results_lab2.png">
 
 Aquí se muestra la imagen subida con su respectiva descripción y tags generados por los modelos mencionados para cada funcionalidad. Para reiniciar el proceso, el usuario puede seleccionar el botón Subir otra foto y procesar las imágenes que considere necesarias. 
 
