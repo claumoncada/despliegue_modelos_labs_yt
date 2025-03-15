@@ -1,8 +1,6 @@
 # Lab 2: Kafka for Data Streaming
 Este laboratorio tiene como objetivo brindarte experiencia práctica con Apache Kafka, una plataforma de transmisión distribuida
 
-To receive credit for this lab, show your work to the TA during recitation.
-
 ## Objetivos
 - Establecer una conexión SSH segura hacia el servidor de Kafka.
 - Explicar los conceptos de topic en Kafka.
