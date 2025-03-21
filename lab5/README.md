@@ -1,106 +1,56 @@
 # Lab 5: Containerizing with Docker
+El objetivo del presente laboratorio es containerizar una aplicacion Flask y desplegar un modelo de ML utilizando Docker y Docker Compose.
 
-In this lab, you'll learn how to containerize a Flask application, train and deploy a machine learning model using Docker and Docker Compose. By the end of the lab, you'll have a Flask API running in a Docker container that can serve predictions using a machine learning model trained on the Iris dataset.
+## 1. Configuración Inicial de Docker:
+- Instalar Docker en el sistema.
+- Verificar la instalación ejecutando el siguiente comando: `docker run hello-world`
 
-Clone the code from [this](https://github.com/purvag03/mlip-docker-lab-f24/) repository.
+<img src="images_rd/1.png">
 
-## Deliverables
+## 2. Containerización del Entrenamiento del Modelo:
+Completar el archivo `Dockerfile.train`:
+- Copiar `requirements.txt` e instalar las dependencias.
+- Copiar `train.py` al directorio de trabajo.
+- Establecer el comando para ejecutar train.py: `CMD ["python", "train.py"]`
 
-- [ ] Setup Docker on your system
-- [ ] Containerize training the ML Model
-- [ ] Containerize the Flask App for inference
-- [ ] Train and deploy the machine learning model using Docker
+<img src="images_rd/2.png">
 
-## Deliverable 1 - Setup Docker
+## 3. Containerización de la Aplicación Flask para Inferencia:
+### Modifica `server.py` con lo siguiente:
+- Cargar el modelo entrenado.
+- Procesar datos de entrada enviados por una solicitud GET.
+- Devolver la predicción como respuesta.
 
-- Install Docker on your system
-- Verify Docker installation
+<img src="images_rd/3.png">
 
-Follow the instructions for your operating system to install Docker. Then test your installation with:
+### Completar Dockerfile.infer:
+- Establecer el directorio de trabajo /app.
+- Copiar `requirements.txt` y `server.py`
+- Exponer el puerto 8080.
 
-```bash
-docker run hello-world
-```
+<img src="images_rd/4.png">
 
-## Deliverable 2 - Containerize training the Machine Learning Model
+## 4. Configuración de Docker Compose
+### Definir los servicios en el archivo `docker-compose.yml`
+- Usar `Dockerfile.train` para entrenar el modelo.
+- Usar `Dockerfile.infer` para realizar las predicciones.
 
-Complete file named `Dockerfile.train`
-Fill in the TODO sections.
-- Copy requirements.txt and install dependencies
-- Copy train.py to the working directory
-- Set the command to run train.py
+<img src="images_rd/5.png">
 
-## Deliverable 3 - Containerize the Flask App for inference
-### Step 1: Implement the predict() Function
+## 5. Ejecución del Proyecto
+- Construir y ejecutar el Docker Compose: `docker-compose up --build`
 
-In the server.py file, there is a function called predict() where you need to:
-- Load the trained machine learning model.
-- Run inference using an input sent through a GET request.
-- Return the prediction as the response.
-
-Fill in the TODO sections.
-
-### Step 2: Complete Dockerfile.infer
-Fill in the TODO sections.
-- [ ] Set the working directory to /app
-- [ ] Copy requirements.txt and install dependencies
-- [ ] Copy server.py to the working directory
-- [ ] Expose port 8080 or any other free port
-- [ ] Set the command to run  server.py
-
-## Deliverable 4 - Completing the Docker Compose
-### Docker Compose Overview
-Docker Compose is a tool that allows you to define and manage multi-container Docker applications. It uses a docker-compose.yml file to configure the application's services, networks, and volumes. In this lab, you'll use Docker Compose to set up two services:
-
-- Training Service: This service will train a machine learning model using the Iris dataset.
-- Inference Service: Once the model is trained, the inference service will load the trained model and serve predictions via a Flask API.
-  
-Fill in the TODO sections:
-- Set the `Dockerfile.train` for the training service and Dockerfile.infer for the inference service.
--  Use a shared volume (model_storage) to store the trained model between the services.
--  Expose port 8080 (or nay other port) for the Flask app in the inference service.
--  Ensure the inference service starts only after the training service completes (depends_on).
--  Declare the model_storage volume at the end for both services to access the trained model.
-
-### Running the Entire Setup
-
-- Build and run services with Docker Compose
-- Verify both services are running correctly
-
-Use the following command to start your services:
-
-```bash
-docker-compose up --build
-```
-
-## Testing the Prediction Endpoint
-### Calling a GET Request
-For this assignment, run the following CURL command to test your flask setup.
-
+## 6. Prueba de la API de Predicción
+- Realizar una solicitud GET para pobar en endpoint:
 ```
 curl --location --request GET 'localhost:8080/predict' \
 --header 'Content-Type: application/json' \
 --data '{
-    "input": [6.3, 3.3, 6 , 2.5]
+    "input": [6.3, 3.3, 6, 2.5]
 }'
-```
-Alternatively, you can test this on Postman as well - ensure that your body is JSON with the following data
-```json
-{
-    "input": [6.3, 3.3, 6 , 2.5]
-}
+
 ```
 
-## Additional resources 
-1. [Docker For Beginners](https://docker-curriculum.com/)
-2. [Build and Deploy Flask Applications with Docker](https://www.digitalocean.com/community/tutorials/how-to-build-and-deploy-a-flask-application-using-docker-on-ubuntu-20-04)
-3. [Models on Docker](https://towardsdatascience.com/build-and-run-a-docker-container-for-your-machine-learning-model-60209c2d7a7f)
-
-## Troubleshooting
-
-If you encounter issues:
-- Check Docker daemon status
-- Verify port availability
-- Review service logs with `docker-compose logs`
-- Ensure the training service completes before the inference service starts
-
+- Los resultados se muestran a continuación:
+<img src="images_rd/6.png">
+<img src="images_rd/7.png">
