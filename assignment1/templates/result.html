@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Resultados</h1>
+        <div class="text-center mt-4">
+            <img src="{{ photo_url }}" alt="Foto subida" class="img-thumbnail" style="max-width: 500px;">
+            <p class="mt-3"><strong>Descripción Generada:</strong> {{ description }}</p>
+            <p><strong>Tags Generados:</strong> {{ ', '.join(tags) }}</p>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Subir otra foto</a>
+        </div>
+    </div>
+</body>
+</html>
