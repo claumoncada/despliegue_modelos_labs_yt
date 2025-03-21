@@ -40,6 +40,8 @@ Completar el archivo `Dockerfile.train`:
 ## 5. Ejecución del Proyecto
 - Construir y ejecutar el Docker Compose: `docker-compose up --build`
 
+<img src="images_rd/6.png">
+
 ## 6. Prueba de la API de Predicción
 - Realizar una solicitud GET para pobar en endpoint:
 ```
@@ -52,5 +54,7 @@ curl --location --request GET 'localhost:8080/predict' \
 ```
 
 - Los resultados se muestran a continuación:
-<img src="images_rd/6.png">
+
 <img src="images_rd/7.png">
+
+Del lado derecho de la imagen se puede apreciar como dado un conjunto de valores el modelo es capaz de retornar la prediccion de la clase.
