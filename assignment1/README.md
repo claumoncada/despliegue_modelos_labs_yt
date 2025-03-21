@@ -1,4 +1,4 @@
-# Lab 3: Building an ML-enabled Product
+# Assignment 1: Building an ML-enabled Product
 
 Este laboratorio tiene como objetivo implementar técnicas de machine learning mediante el uso de una aplicación web.
 
