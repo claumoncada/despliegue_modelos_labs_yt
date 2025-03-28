@@ -1,32 +1,51 @@
-# cmu-mlip-model-testing-lab
-
 # Lab 4: Model Testing with Zeno and LLM
+Este laboratorio tiene como objetivo interactuar con la plataforma Zeno para casos de prueba utilizando modelos LLM.
 
-In this lab, you will gain hands-on experience with Zeno and LLM-based test case generation.
-- Zeno is an interactive AI evaluation platform for exploring, debugging, and sharing how your AI systems perform. Evaluate any task and data type with Zeno's modular views which support everything from chatbot conversations to object detection and audio transcription.
-- LLM has been increasingly used for generating synthetic data, and one use case there is to generate additional test cases for a model.
+## Pasos generales
+- Levantar el servidor local de Zeno utilizando el conjunto de datos proporcionado y generar predicciones del modelo.
+- Crear 5 slices en la interfaz de Zeno y hacer observaciones significativas.
+- Proponer 10 ejemplos para uno de los slices seleccionados.
 
-To receive credit for this lab, show your work to the TA during recitation.
+## Pasos iniciales para el despliegue
+- Clonar el repositorio con el siguiente comando: `git clone https://github.com/malusamayo/cmu-mlip-model-testing-lab`
+- Verificar que la versión de Python sea >= 3.10.
+- Instalar las siguientes librerias: `pip install zenoml datasets transformers tqdm`
 
-## Deliverables
-- [ ] Successfully start a local Zeno server on the dataset provided, with metrics and model predictions
-- [ ] Create 5 slices in the Zeno interface, derive meaningful insights and showcase them to the TA
-- [ ] Write down 3 additional slices you want to create and successfully generate 10 examples for one selected slice
+## Pasos del Notebook:
+- Completar los 7 pasos indicados.
+- Tras ejecutar el código, accede al servidor en: [http://localhost:8231](http://localhost:8231)
 
-Hints: For the slices you create, you should be able to justify why you want to create them and demonstrate what you have observed for the created slices.
+<img src="images_rd/1.png">
 
-## Getting started
-- Clone the starter code from this [Git repository](https://github.com/cmu-seai/cmu-mlip-model-testing-lab).
-- The repository includes a python notebook which contains the starter code.
+Una vez ejecutado los pasos iniciales del notebook se puede evidenciar el levantamiento del servidor para el uso de la plataforma Zeno.
 
-## Installation instructions
-- python 3.10 version is needed for the zeno packages to run correctly
-- You can run the command `python -m venv mlip-lab4` in the terminal to create a new virtual environment (optional)
-- pip install zenoml datasets transformers tqdm torch
-- Restart the ipynb kernel after running all installation commands
+## Slices: Creación y Observaciones
+### Slices iniciales (2) propuestos en notebook:
+Utilizar la interfaz de Zeno para crear y analizar los slices propuestos, los cuales incluyen:
+- Tweets con hashtags.
+- Tweets con palabras positivas fuertes (por ejemplo, amor). En este caso se utilizo la palabra like. 
 
-## Code related details
-- Finish all 7 steps mentioned in the python notebook
-- If you have trouble downloading the datasets and/or running model inference, use `tweets.csv` shared in the folder
-- If you have trouble starting a local Zeno server, copy the code in `zenohub.py` to the notebook and follow the steps
-- If you have trouble using the GPTs provided, use plain ChatGPT for test case generation
+<img src="images_rd/1.png">
+
+Los slices generados en la plataforma Zeno reflejan como cambia el rendimiento del modelo seleccionado, en este caso 'roberta', acorde a la subdivisión de datos realizada con cada slice.
+
+### Propuesta de 3 slices adicionales:
+Diseñar tres ideas adicionales para divisiones de datos que complemente el análisis anterior.
+
+<img src="images_rd/2.png">
+<img src="images_rd/3.png">
+
+Estos slices seleccionados fueron en base a elementos comunes que contienen los tweets, por lo que se asume pudieran tener algún impacto en el rendimiento del modelo si se seleccionan.
+
+### Propuesta de 3 slices con distinto contexto al de los tweets dados:
+Diseñar tres ideas hipotéticas para divisiones de datos adicionales con algún contexto adicional al de los datos proporcionados. 
+
+<img src="images_rd/4.png">
+
+Estos contextos pueden ayudar a desglosar de diferentes maneras tweets acorde a contextos específicos. 
+
+### Generación de casos adicionales:
+Usar LLMs para generar 10 ejemplos representativos en base a uno de los slices anteriores. Para este ejemplo, se selecciono el tercer slice que se refiere a tweets con sarcasmo y humor. 
+
+<img src="images_rd/5.png">
+
