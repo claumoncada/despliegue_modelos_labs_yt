@@ -20,8 +20,13 @@ Permite a los usuarios ingresar su ID para que el sistema ofrezca recomendacione
 - Ejecutar el siguiente comando en la terminal para iniciar el servidor Flask: `python app.py`
 - Esto arrancará la aplicación web en `http://127.0.0.1:5000/.`
 - En la página principal, ingresar el ID de usuario (por ejemplo, 1, 2, 3, etc.).
+
+<img src="index.png">
+
 - Seleccionar el modelo que se desea usar (KNN o Regresión Lineal).
 - Hacer clic en Obtener Recomendaciones.
 - La aplicación mostrará una lista de películas recomendadas para el ID de usuario basado en el modelo seleccionado.
+
+<img src="resultados.png">
 
 
