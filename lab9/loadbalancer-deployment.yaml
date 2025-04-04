@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-load-balancer  # El nombre de tu despliegue (puede permanecer igual o cambiar)
+spec:
+  replicas: 1  # Número de réplicas, puedes ajustarlo según tus necesidades
+  selector:
+    matchLabels:
+      app: flask-load-balancer
+  template:
+    metadata:
+      labels:
+        app: flask-load-balancer
+    spec:
+      containers:
+      - name: flask-load-balancer
+        # Reemplazar con tu nombre de usuario de Docker Hub y el nombre de la imagen
+        image: claumoncada/load-balancer:1.0.0  # Usa la imagen de Docker Hub que subiste anteriormente
+        ports:
+        - containerPort: 8080  # Puerto que expone el contenedor
